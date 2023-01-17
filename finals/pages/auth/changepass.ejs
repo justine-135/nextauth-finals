@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MotionCPT | Change password</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input[type="submit"] {
+      cursor: pointer;
+    }
+
+    .signin_div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .signin_form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+    .h1 {
+      font-family: "Inter", sans-serif;
+      margin: 10px 0;
+    }
+    .input_text {
+      height: 50px;
+      width: 20%;
+      min-width: 260px;
+      max-width: 280px;
+      border: 1px solid rgba(0, 0, 0, 0.349);
+      border-radius: 5px;
+      outline: none;
+      padding: 5px;
+      font-size: 1.125rem;
+      transition: 200ms ease;
+    }
+    .input_text:focus {
+      border: 3px solid #152dff;
+    }
+    .forgotpass_div {
+      display: flex;
+      align-items: center;
+      width: 20%;
+      min-width: 260px;
+      max-width: 280px;
+    }
+    .forgotpass_link {
+      margin-left: auto;
+      font-family: "Inter", sans-serif;
+      color: #152dff;
+      font-size: 1rem;
+      text-align: right;
+    }
+    .signup_btn {
+      height: 50px;
+      width: 20%;
+      min-width: 260px;
+      max-width: 280px;
+      margin: 10px 0 10px 0;
+      background-color: #152dff;
+      color: white;
+      border: none;
+      font-size: 1.125rem;
+      border-radius: 5px;
+    }
+    .p,
+    .p_notfound {
+      font-family: "Inter", sans-serif;
+    }
+    .p_notfound {
+      color: red;
+    }
+    .signup_link {
+      font-family: "Inter", sans-serif;
+      color: #152dff;
+    }
+  </style>
+  <body>
+    <main class="signin_div">
+      <form class="signin_form" id="change_pass_form" action="" method="POST">
+        <!-- <img src="/camera.svg" alt="" height="{42}" width="{42}" /> -->
+
+        <h1 class="h1">Change password</h1>
+        <input
+          class="input_text"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="New password"
+        />
+        <input
+          class="input_text"
+          type="password"
+          name="cpassword"
+          id="cpassword"
+          placeholder="Confirm password"
+        />
+        <input
+          class="signup_btn"
+          type="submit"
+          value="Submit"
+          name="login"
+          id=""
+        />
+        <p class="p_notfound"></p>
+      </form>
+    </main>
+
+    <!-- <script>
+      var status = `<%= JSON.stringify(status) %>`;
+      console.log(JSON.parse(status));
+      if (JSON.parse(status) == "verified") {
+        if (confirm("Do u want to login?")) {
+          window.location.href = "http://localhost:3001/";
+        }
+      }
+    </script> -->
+
+    <script>
+      const pwdInput = document.querySelector("#password");
+      const cPwdInput = document.querySelector("#cpassword");
+      const changePassForm = document.querySelector("#change_pass_form");
+      const alertText = document.querySelector(".p_notfound");
+
+      changePassForm.addEventListener("submit", (e) => {
+        if (pwdInput.value !== cPwdInput.value) {
+          e.preventDefault();
+          alertText.innerHTML = "Password not match!";
+        } else if (pwdInput.value == "" || cPwdInput.value == "") {
+          e.preventDefault();
+          alertText.innerHTML = "Fill up inputs!";
+        } else if (pwdInput.value.length < 8) {
+          e.preventDefault();
+          alertText.innerHTML = "Minimum password character is 8.";
+        }
+      });
+    </script>
+  </body>
+</html>
