@@ -12,8 +12,6 @@ const Navbar = () => {
   });
   const router = useRouter();
 
-  console.log(window.location.href);
-
   const handleBack = () => {
     router.replace("/");
   };
@@ -25,7 +23,6 @@ const Navbar = () => {
           <p className={styles.p_user}>Welcome: {user.name}</p>
         </div>
         <button className={styles.signout_btn} onClick={() => signOut()}>
-          <img src="/logoutcurve.svg" alt="" />
           Logout
         </button>
       </nav>
@@ -34,14 +31,12 @@ const Navbar = () => {
     return (
       <nav className={styles.navbar}>
         <button className={styles.back_btn} onClick={handleBack}>
-          <img src="/back.svg" alt="" />
           Back
         </button>
         <div>
           <p className={styles.p_user}>Welcome: {user.name}</p>
         </div>
         <button className={styles.signout_btn} onClick={() => signOut()}>
-          <img src="/logoutcurve.svg" alt="" />
           Logout
         </button>
       </nav>

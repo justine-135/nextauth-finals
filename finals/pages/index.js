@@ -59,7 +59,6 @@ const motion = ({ motions }) => {
                     height="70px"
                     width="120px"
                   />
-                  <img src="/arrowright2.svg" alt="" />
                 </Link>
               ))}
             </div>

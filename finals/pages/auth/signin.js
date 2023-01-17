@@ -58,8 +58,6 @@ const signin = () => {
             action=""
             onSubmit={handleSubmit}
           >
-            <img src="/camera.svg" alt="" height={42} width={42} />
-
             <h1 className={styles.h1}>Welcome</h1>
             <input
               className={styles.input_text}

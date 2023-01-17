@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "camera_db",
+  database: "your_db",
 });
 
 app.use(express.json({ limit: "8mb" }));
@@ -17,11 +17,11 @@ app.use(express.urlencoded({ limit: "8mb", extended: false }));
 const cors = require("cors");
 const corsOptions = {
   origin: "*",
-  credentials: true, //access-control-allow-credentials:true
+  credentials: true,
   optionSuccessStatus: 200,
 };
 
-app.use(cors(corsOptions)); // Use this after the variable declaration
+app.use(cors(corsOptions));
 
 const bcrypt = require("bcryptjs");
 
@@ -32,10 +32,8 @@ const JWT_SECRET =
 
 const nodemailer = require("nodemailer");
 var path = require("path");
-// app.set('views', path.join(__dirname, '/yourViewDirectory'));
 
 app.set("views", "./pages/auth");
-// app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // api to insert row using POST method
@@ -174,15 +172,15 @@ app.post("/api/users/reset_pass", (req, res) => {
   var transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-      user: "motioncpt2@outlook.com",
-      pass: "cpet17finals",
+      user: "input your email",
+      pass: "email password",
     },
   });
 
   var mailOptions = {
-    from: "motioncpt2@outlook.com",
-    to: email,
-    subject: "MotionCPT - Reset pasword link",
+    from: "from email",
+    to: "to email",
+    subject: "Next-auth - Reset pasword link",
     text: link,
   };
 
@@ -228,7 +226,7 @@ app.post("/api/users/reset_pass/:id/:token", (req, res) => {
         if (err) throw err;
         console.log(results);
         res.send(
-          "<script>alert('You have changed password. Closing page...');window.close();</script > "
+          "<script>alert('Changed password.');window.close();</script > "
         );
       }
     );
